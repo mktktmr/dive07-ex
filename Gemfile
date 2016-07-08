@@ -45,3 +45,7 @@ group :development do
   gem 'spring'
 end
 
+###
+#gem 'pry-rails', '0.3.4'
+#### bootstrap
+#gem 'twitter-bootstrap-rails'
