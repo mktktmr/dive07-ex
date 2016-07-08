@@ -46,6 +46,6 @@ group :development do
 end
 
 ###
-#gem 'pry-rails', '0.3.4'
+gem 'pry-rails', '0.3.4'
 #### bootstrap
-#gem 'twitter-bootstrap-rails'
+gem 'twitter-bootstrap-rails'
