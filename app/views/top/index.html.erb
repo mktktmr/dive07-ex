@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-md-offset-3 col-md-6">
+    <%= form_for @tweet do |f| %>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <%= f.text_area :content, placeholder: "今どうしてる？", class: "form-control" %>
+          <%= f.submit "ツイート", class: "btn btn-primary pull-right" %>
+        </div>
+      </div>
+    <% end %>
+    <% @tweets.each do |t| %>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <%= simple_format t[:content] %>
+          <button class="btn btn-success">edit</button>
+          <button class="btn btn-danger">delete</button>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
