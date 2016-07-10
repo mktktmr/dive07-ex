@@ -1,5 +1,18 @@
 <div class="row">
   <div class="col-md-offset-3 col-md-6">
+    <% if @tweet.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= @tweet.errors.count %>件のエラーがあります。</h2>
+        <ul>
+          <% @tweet.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <% if notice %>
+      <div class="alert alert-success" role="alert"><%= notice %></div>
+    <% end %>
     <%= form_for @tweet do |f| %>
       <div class="panel panel-default">
         <div class="panel-body">
@@ -12,10 +25,16 @@
       <div class="panel panel-default">
         <div class="panel-body">
           <%= simple_format t[:content] %>
-          <button class="btn btn-success">edit</button>
-          <button class="btn btn-danger">delete</button>
+          <button class="btn btn-success pull-right btn-edit-tweet-modal", value="<%= t.id %>" >編集</button>
+          <%= form_for t, method: :delete do |f| %>
+            <%= f.submit "削除", data: {confirm: "本当に削除しますか？"}, class: 'btn btn-danger pull-right' %>
+          <% end %>
         </div>
       </div>
+      <input type="hidden" id="<%=  'content_' + t.id.to_s %>" value="<%= t.content %>" >
     <% end %>
   </div>
 </div>
+
+<%= render "tweets/new_modal" %>
+<%= render "tweets/edit_modal" %>

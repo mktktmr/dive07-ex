@@ -1,0 +1,31 @@
+<div class="modal fade" id="tweet-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"><div class="text-center">ツイートする</div></h4>
+      </div>
+      <div class="modal-body">
+        <div id="m_error_explanation" style="display: none">
+          <h2 id="error-count"></h2>
+          <ul>
+          </ul>
+        </div>
+        <%= form_tag tweets_path(:json), id: "m_new_tweet", method: :post, remote: true do %>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <%= text_area_tag 'tweet[content]' , nil, placeholder: "今どうしてる？", class: "form-control" %>
+              <%= submit_tag "ツイート", class: "btn btn-primary pull-right" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <%#
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+      %>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

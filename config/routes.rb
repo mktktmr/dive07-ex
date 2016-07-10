@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :tweets
+  resources :tweets, except: [:index, :show]
   root 'top#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
