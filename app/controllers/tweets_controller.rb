@@ -9,7 +9,7 @@ class TweetsController < ApplicationController
         format.json { redirect_to root_path, notice: "ツイートしました。" }
       end
     else
-      @tweets = Tweet.order "id DESC"
+      @tweets = Tweet.order 'updated_at DESC'
       respond_to do |format|
         format.html { render template: 'top/index' }
         format.json { render json: @tweet.errors.full_messages, status: :unprocessable_entity }
@@ -31,7 +31,7 @@ class TweetsController < ApplicationController
         format.json { redirect_to root_path, notice: "ツイートを編集しました。" }
       end
     else
-      @tweets = Tweet.order "id DESC"
+      @tweets = Tweet.order 'updated_at DESC'
       respond_to do |format|
         format.html { render template: 'top/index' }
         format.json { render json: @tweet.errors.full_messages, status: :unprocessable_entity }
